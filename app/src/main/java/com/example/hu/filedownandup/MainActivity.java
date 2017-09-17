@@ -8,10 +8,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
-<<<<<<< HEAD
 import android.util.Log;
-=======
->>>>>>> 9/17
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
