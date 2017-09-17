@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button fore_start;
     private Button fore_pause;
     private Button fore_cancel;
+    private Button goto_upload;
     private ProgressBar progressBar;
 
     private String url = "http://bunnyhsu.oss-cn-shanghai.aliyuncs.com/figure_2.jpg";
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fore_start = (Button) findViewById(R.id.fore_start);
         fore_pause = (Button) findViewById(R.id.fore_pause);
         fore_cancel = (Button) findViewById(R.id.fore_cancel);
+        goto_upload = (Button) findViewById(R.id.goto_upload);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         start.setOnClickListener(this);
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fore_start.setOnClickListener(this);
         fore_pause.setOnClickListener(this);
         fore_cancel.setOnClickListener(this);
+        goto_upload.setOnClickListener(this);
 
         Intent intent = new Intent(this, DownloadService.class);
         startService(intent);
@@ -162,6 +165,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Toast.makeText(MainActivity.this, "Canceled", Toast.LENGTH_SHORT).show();
                     }
                 }
+                break;
+            case R.id.goto_upload:
+                Intent intent = new Intent(MainActivity.this, UploadActivity.class);
+                startActivity(intent);
                 break;
         }
     }

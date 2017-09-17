@@ -26,6 +26,8 @@
             android:name=".download.DownloadService"
             android:enabled="true"
             android:exported="true" />
+
+        <activity android:name=".UploadActivity"></activity>
     </application>
 
 </manifest>

@@ -72,39 +72,6 @@ public class DownloadService extends Service {
         }
     };
 
-    private DownloadListener fore_listener = new DownloadListener() {
-        @Override
-        public void onProgress(int progress) {
-            setFore_progress(progress);
-        }
-
-        @Override
-        public void onSuccess() {
-            downloadTask = null;
-            stopForeground(true);
-            Toast.makeText(DownloadService.this, "Download Success", Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void onFailed() {
-            downloadTask = null;
-            stopForeground(true);
-            Toast.makeText(DownloadService.this, "Download Failed", Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void onPause() {
-            downloadTask = null;
-            Toast.makeText(DownloadService.this, "Download Pause", Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void onCancel() {
-            downloadTask = null;
-            Toast.makeText(DownloadService.this, "Download Cancel", Toast.LENGTH_SHORT).show();
-        }
-    };
-
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -143,35 +110,6 @@ public class DownloadService extends Service {
                     stopForeground(true);
                     Toast.makeText(DownloadService.this, "Canceled", Toast.LENGTH_SHORT).show();
                 }
-            }
-        }
-
-        public void start_fore(String url) {
-            if (downloadTask == null) {
-                downloadUrl = url;
-                downloadTask = new DownloadTask(fore_listener);
-                downloadTask.execute(downloadUrl);
-            }
-        }
-
-        public void pause_fore() {
-            if (downloadTask != null) {
-                downloadTask.pauseDownload();
-            }
-        }
-
-        public void cancel_fore() {
-            if (downloadTask != null) {
-                downloadTask.cancelDownload();
-            } else {
-                String fileName = downloadUrl.substring(downloadUrl.lastIndexOf("/"));
-                String filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath();
-                File file = new File(filePath + fileName);
-                if (file.exists()) {
-                    file.delete();
-                }
-                setFore_progress(0);
-                Toast.makeText(DownloadService.this, "Canceled", Toast.LENGTH_SHORT).show();
             }
         }
     }

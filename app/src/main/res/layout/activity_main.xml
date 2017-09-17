@@ -43,6 +43,12 @@
         android:layout_height="wrap_content"
         android:text="fore_cancel" />
 
+    <Button
+        android:id="@+id/goto_upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="upload" />
+
     <ProgressBar
         android:id="@+id/progressBar"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
