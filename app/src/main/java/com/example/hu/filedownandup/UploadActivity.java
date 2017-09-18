@@ -62,7 +62,6 @@ public class UploadActivity extends AppCompatActivity {
                             getPath() + File.separator + "figure_2.jpg";
                     uploadTask = new UploadTask(listener);
                     uploadTask.execute(uploadUrl, fileName);
-
                 }
             }
         });
